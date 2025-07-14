@@ -1,0 +1,12 @@
+import pandas as pd
+
+def preprocess_loan_data(https://www.kaggle.com/datasets/sonalisingh1411/loan-approval-prediction?select=Training+Dataset.csv):
+    df = pd.read_csv(https://www.kaggle.com/datasets/sonalisingh1411/loan-approval-prediction?select=Training+Dataset.csv)
+    df.fillna("Unknown", inplace=True)
+
+    insights = []
+    for _, row in df.iterrows():
+        insight = f"Applicant with income {row['ApplicantIncome']} and credit history {row['Credit_History']} applied for a loan of {row['LoanAmount']} under property area {row['Property_Area']} and loan status was {row['Loan_Status']}."
+        insights.append(insight)
+
+    return insights
