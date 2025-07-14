@@ -1,0 +1,17 @@
+from preprocess import preprocess_loan_data
+from retriever import Retriever
+from generator import Generator
+
+data_path = "data/Training Dataset.csv"
+texts = preprocess_loan_data(data_path)
+
+retriever = Retriever(texts)
+generator = Generator()
+
+while True:
+    question = input("Ask a loan-related question (or 'quit'): ")
+    if question.lower() == "quit":
+        break
+    context = " ".join(retriever.retrieve(question))
+    answer = generator.generate(question, context)
+    print(f"🤖 Answer: {answer}")
